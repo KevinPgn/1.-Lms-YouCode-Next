@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 interface StartBuildingProps {
   title: string;
-  backgroundColor: string;
+  backgroundColor?: string;
 }
 
 export const StartBuilding = ({title, backgroundColor}: StartBuildingProps) => {
