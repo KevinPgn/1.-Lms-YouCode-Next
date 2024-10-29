@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { LinksLeft } from "./LinksLeft";
+import { NavbarRight } from "./NavbarRight";
 
 export const Header = () => {
   return <header className="h-16 sticky top-0 border-b border-zinc-800 z-40">
@@ -12,11 +13,13 @@ export const Header = () => {
           <Image src="/logo.svg" alt="Logo" width={50} height={50} />
           <h2 className="text-xl font-semibold">YouCode</h2>
         </Link>
-        
+
         <LinksLeft />
       </div>
 
       {/* right side navbar */} 
+      <NavbarRight />
+      
     </nav>
   </header>
 }
