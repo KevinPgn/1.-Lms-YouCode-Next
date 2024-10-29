@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 
 export const Hero = () => {
-  return <section className="my-24 flex items-center gap-8 w-full px-2 max-xl:flex-col max-xl:my-8">
+  return <section className="max-w-[1150px] mx-auto my-24 flex items-center gap-8 w-full px-2 max-xl:flex-col max-xl:my-8">
     {/* left side */}
     <div className="flex flex-col gap-4 flex-1 max-xl:w-full max-xl:text-center">
         <h1 className="text-6xl max-md:text-4xl font-extrabold bg-gradient-to-r from-red-400 to-pink-600 bg-clip-text text-transparent">
