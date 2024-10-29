@@ -1,7 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const Faq = () => {
-  return <section className="bg-[#27262B] py-20">
+  return <section className="bg-[#27262B] py-20 px-2">
     <div className="max-w-[1100px] mx-auto text-white">
         <h2 className="text-4xl font-extrabold mb-4">FAQ</h2>
 
