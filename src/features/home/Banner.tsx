@@ -1,7 +1,7 @@
 import { PencilLine, Receipt, Rocket } from "lucide-react"
 
 export const Banner = () => {
-  return <section className="w-full bg-[#E11D48] py-16 mb-10">
+  return <section className="w-full bg-[#E11D48] py-16">
     <div className="max-w-[1150px] mx-auto flex items-start justify-around gap-4 flex-1 flex-wrap px-2">
 
         <div className="flex items-center flex-col gap-4 w-[300px]">
