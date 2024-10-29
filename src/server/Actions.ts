@@ -4,6 +4,91 @@ import {z} from "zod"
 import { authenticatedAction } from "@/lib/safe-actions"
 import { revalidatePath } from "next/cache"
 import { getSession } from "@/utils/CacheSession"
+/*
+model Course {
+  id String @id @default(cuid())
+  slug String @unique
+  title String
+  description String?
+  image String?
+  level String?
+  category String?
+
+  published Boolean @default(false)
+
+  authorId String
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  chapters Chapter[]
+  enrolledUsers EnrolledUser[]
+  courseReviews CourseReview[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([authorId])
+}
+
+model Chapter {
+  id String @id @default(cuid())
+  slug String @unique
+  title String
+  content String?
+  videoUrl String?
+
+  published Boolean @default(false)
+  order Int
+
+  courseId String
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  userProgress UserProgress[]
+  chapterNotes ChapterNote[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([courseId])
+}
+
+model EnrolledUser {
+  id String @id @default(cuid())
+
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  courseId String
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([courseId])
+  @@unique([userId, courseId])
+}
+
+model UserProgress {
+  id String @id @default(cuid())
+
+  isCompleted Boolean @default(false)
+  completedAt DateTime?
+  progress Int @default(0)
+
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  chapterId String
+  chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([chapterId])
+  @@unique([userId, chapterId])
+}unique([userId, chapterId])
+
+*/ 
 
 export const createCourse = authenticatedAction
     .schema(z.object({
