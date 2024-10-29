@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer/Footer";
 import { Banner } from "@/features/home/Banner";
 import { Faq } from "@/features/home/Faq";
 import { Hero } from "@/features/home/Hero";
@@ -8,8 +9,10 @@ export default function Home() {
     <>
       <Hero />
       <Banner />
-      <StartBuilding title="Start building your course today" />
+      <StartBuilding title="Start building your course today" backgroundColor="bg-black" />
       <Faq />
+      <StartBuilding title="Try it ! It's free" backgroundColor="bg-[#121212]" />
+      <Footer />
     </>
   );
 }
