@@ -70,4 +70,8 @@
     * {
       @apply border-border;
     }
+
+    [data-theme="dark"] {
+      --background: #0D0A08;
+    }
   }
