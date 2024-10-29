@@ -1,9 +1,17 @@
 import { SignInButton } from "@/components/auth/SignInButton";
 import { ModeToggle } from "./ModeToggle";
+import { UserProps } from "@/lib/types";
+import { UserMenu } from "./UserMenu";
 
-export const NavbarRight = () => {
+export const NavbarRight = ({user}: {user: UserProps}) => {
   return <div className="flex items-center gap-2">
-    <SignInButton />
-    <ModeToggle />
+    {!user ? (
+        <SignInButton />
+    ) : (
+        <>
+            <UserMenu userImage={user.image} userName={user.name} />
+            <ModeToggle />
+        </>
+    )}
   </div>
 }

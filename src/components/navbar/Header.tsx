@@ -2,8 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { LinksLeft } from "./LinksLeft";
 import { NavbarRight } from "./NavbarRight";
+import { getSession } from "@/utils/CacheSession";
+import { UserProps } from "@/lib/types";
 
-export const Header = () => {
+export const Header = async () => {
+  const session = await getSession();
+  const user: UserProps = session?.user as UserProps;
+
   return <header className="h-16 sticky top-0 border-b border-zinc-800 z-40">
     <nav className="container flex items-center justify-between h-full">
       
@@ -18,7 +23,7 @@ export const Header = () => {
       </div>
 
       {/* right side navbar */} 
-      <NavbarRight />
+      <NavbarRight user={user} />
       
     </nav>
   </header>
