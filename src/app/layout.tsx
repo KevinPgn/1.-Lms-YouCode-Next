@@ -5,6 +5,8 @@ import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Header } from "@/components/navbar/Header";
 import { Toaster } from "@/components/ui/toaster";
+import { Footer } from "@/components/footer/Footer";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -29,6 +31,7 @@ export default function RootLayout({
           <SessionProvider>
             <Header />
             {children}
+            <Footer />
             <Toaster />
           </SessionProvider>
         </ThemeProvider>

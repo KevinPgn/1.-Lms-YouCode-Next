@@ -12,8 +12,6 @@ export default function Home() {
       <StartBuilding title="Start building your course today" backgroundColor="bg-black" />
       <Faq />
       <StartBuilding title="Try it ! It's free" />
-      <Footer />
-      <span className="flex items-center pb-2 justify-center dark:text-zinc-400 text-sm">© 2024 YouCode</span>
     </>
   );
 }

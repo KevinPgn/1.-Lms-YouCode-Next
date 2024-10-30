@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const Footer = () => {
-  return <footer className="w-full border-t dark:border-zinc-700 border-gray-300 py-3 px-2">
+  return <footer className="w-full mt-20 border-t dark:border-zinc-700 border-gray-300 py-3 px-2">
     <div className="max-w-[980px] mx-auto flex items-start justify-between">
       {/* footer left */}
         <Link href="/" className="flex items-center gap-2">
