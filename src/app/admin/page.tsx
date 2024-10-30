@@ -21,9 +21,6 @@ export const metadata = {
     index: true,
     follow: true
   },
-  alternates: {
-    canonical: absoluteUrl("/admin")
-  }
 }
 
 const AdminPage = async () => {
