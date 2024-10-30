@@ -26,13 +26,7 @@ export const metadata = {
 const AdminPage = async () => {
   const session = await getSession()
   if(!session) redirect("/login")
-  
-  const result = await getStatsTotal({})
-  if (!result?.data) {
-    throw new Error("Failed to fetch stats")
-  }
-    
-  const {users, chapters, courses} = result.data
+
 
   return (
     <div className="w-full min-h-[calc(100vh-250px)]">
