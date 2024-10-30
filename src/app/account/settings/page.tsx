@@ -1,4 +1,4 @@
-import { SettingsCard } from '@/features/account/settings/components/SettingsCard'
+import { SettingsCard } from '@/features/accountManager/settings/components/SettingsCard'
 import { getSession } from '@/utils/CacheSession'
 import { redirect } from 'next/navigation'
 import { UserProps } from '@/lib/types'

@@ -1,4 +1,4 @@
-import { CardAccount } from '@/features/account/components/CardAccount'
+import { CardAccount } from '@/features/accountManager/account/components/CardAccount'
 import { getSession } from '@/utils/CacheSession'
 import { UserProps } from '@/lib/types'
 import { redirect } from 'next/navigation'
