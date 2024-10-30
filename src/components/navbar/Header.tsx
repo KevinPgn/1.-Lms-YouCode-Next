@@ -9,7 +9,7 @@ export const Header = async () => {
   const session = await getSession();
   const user: UserProps = session?.user as UserProps;
 
-  return <header className="h-16 sticky top-0 border-b dark:border-zinc-800 border-zinc-200 z-40">
+  return <header className="h-16 sticky top-0 border-b dark:border-zinc-800 dark:bg-[#121212] border-zinc-200 z-40">
     <nav className="container flex items-center justify-between h-full">
       
       {/* left side navbar */}
