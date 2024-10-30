@@ -12,7 +12,7 @@ const AccountPage = async () => {
   }
   
   return (
-    <div className='px-2'>
+    <div className='px-2 flex-1 min-h-[calc(100vh-250px)]'>
         <CardAccount 
           userImage={user.image} 
           userEmail={user.email} 
