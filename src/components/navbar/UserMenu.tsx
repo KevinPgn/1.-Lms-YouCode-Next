@@ -4,11 +4,13 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Button } from "@/components/ui/button";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
-import { LogOut } from "lucide-react";
+import { LogOut, User } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export const UserMenu = ({userImage, userName}: {userImage: string, userName: string}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const router = useRouter();
 
   const handleLogout = async () => {
     try {
@@ -34,13 +36,21 @@ export const UserMenu = ({userImage, userName}: {userImage: string, userName: st
           <span className="text-xs text-white">{userName}</span>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem
+          onClick={() => router.push('/account')}
+          className="flex items-center gap-2">
+            <User className="w-4 h-4" />
+            Account
+          </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onSelect={() => {
+          <DropdownMenuItem
+          className="flex items-center gap-2"
+          onSelect={() => {
             setIsOpen(true);
             setIsDropdownOpen(false);
           }}>
-            Log Out
+            <LogOut className="w-4 h-4" />
+            Logout
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
