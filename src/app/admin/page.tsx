@@ -3,11 +3,19 @@ import { ButtonCourses } from "@/features/adminManager/adminStats/components/But
 import { StatsTotalCourses } from "@/features/adminManager/adminStats/components/StatsTotalCourses"
 import { getSession } from "@/utils/CacheSession"
 import { redirect } from "next/navigation"
+import { getStatsTotal } from "@/features/adminManager/adminStats/server/CountStats"
 
 const AdminPage = async () => {
   const session = await getSession()
   if(!session) redirect("/login")
   
+  const result = await getStatsTotal({})
+  if (!result?.data) {
+    throw new Error("Failed to fetch stats")
+  }
+    
+  const {users, chapters, courses} = result.data
+
   return (
     <div className="w-full min-h-[calc(100vh-250px)]">
       <BreadCrumbAdminStats />
@@ -18,7 +26,7 @@ const AdminPage = async () => {
           <ButtonCourses />
         </div>
 
-        <StatsTotalCourses />
+        <StatsTotalCourses users={users} chapters={chapters} courses={courses} />
       </section>
     </div>
   )
