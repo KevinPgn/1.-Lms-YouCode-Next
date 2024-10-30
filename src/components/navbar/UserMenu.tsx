@@ -33,7 +33,7 @@ export const UserMenu = ({userImage, userName}: {userImage: string, userName: st
             height={25} 
             className="rounded-full"
           />
-          <span className="text-xs text-white">{userName}</span>
+          <span className="text-xs dark:text-white">{userName}</span>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem
