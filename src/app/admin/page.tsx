@@ -36,9 +36,11 @@ const AdminPage = async () => {
           <h2 className="text-3xl font-semibold tracking-tight mb-4 mt-5 border-b dark:border-zinc-800 border-zinc-200 w-fit pb-2">Courses</h2>
           <ButtonCourses />
         </div>
+
         <Suspense fallback={<div>Loading...</div>}> 
           <StatsContent />
         </Suspense>
+        
       </section>
     </div>
   )
