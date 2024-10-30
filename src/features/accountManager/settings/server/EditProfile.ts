@@ -5,25 +5,23 @@ import { authenticatedAction } from "@/lib/safe-actions"
 import { revalidatePath } from "next/cache"
 import { getSession } from "@/utils/CacheSession"
 
+// edit profile
 export const editProfile = authenticatedAction
     .schema(z.object({
-        image: z.string().min(1),
-        name: z.string().min(1),
+        name: z.string(),
+        image: z.string().optional(),
     }))
-    .action(async ({ctx:{userId}, parsedInput:{image, name}}) => {
-
-        const existingUser = await prisma.user.findUnique({ where: {id: userId} })
-        if(!existingUser) throw new Error("User not found")
-
+    .action(async ({parsedInput:{name, image}, ctx:{userId}}) => {
+        const exisintgUser = await prisma.user.findUnique({where: {id: userId}})
+        if(!exisintgUser) throw new Error("User not found")
+        
         const user = await prisma.user.update({
             where: {id: userId},
             data: {
-                image,
                 name,
+                image
             }
         })
-
-        revalidatePath(`/account/settings`)
+        revalidatePath(`/settings`)
         return user
-
     })
