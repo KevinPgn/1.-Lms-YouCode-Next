@@ -13,7 +13,7 @@ const SettingsUserPage = async () => {
 
   return (
     <section className="max-w-3xl mx-auto">
-      <h2 className="text-3xl font-medium mb-4 mt-5 border-b dark:border-zinc-800 border-zinc-200 w-fit pb-3">Account settings</h2>
+      <h2 className="text-3xl font-semibold tracking-tight mb-4 mt-5 border-b dark:border-zinc-800 border-zinc-200 w-fit pb-2">Account settings</h2>
       <SettingsCard userImageUrl={user.image} userName={user.name}/>
     </section>
   )
