@@ -9,7 +9,15 @@ import { useState } from "react"
 import { useToast } from "@/hooks/use-toast"
 
 export default function EditCourse({course}: {course: any}) {
-    const {register, handleSubmit, formState:{errors}} = useForm()
+    const {register, handleSubmit, formState:{errors}} = useForm({
+        defaultValues: {
+            title: course.title,
+            description: course.description,
+            image: course.image,
+            level: course.level,
+            category: course.category
+        }
+    })
     const [level, setLevel] = useState("beginner")
     const {toast} = useToast()
     
@@ -31,7 +39,6 @@ export default function EditCourse({course}: {course: any}) {
             <Input id="image"
                 placeholder="https://example.com/image.png"
                 {...register("image")} 
-                defaultValue={course.image}
                 className="bg-transparent h-9 dark:border-zinc-800 border-zinc-200"
             />
             <span className="text-xs px-2 dark:text-gray-400">Host and use an image. You can use Imgur to host your image.</span>
@@ -43,7 +50,6 @@ export default function EditCourse({course}: {course: any}) {
             <Input id="title"
                 placeholder="NextReact course"
                 {...register("title")} 
-                defaultValue={course.title}
                 className="bg-transparent h-9 dark:border-zinc-800 border-zinc-200"
             />
         </div>
@@ -52,7 +58,6 @@ export default function EditCourse({course}: {course: any}) {
             <Textarea id="description"
                 placeholder="Learn how to build a Next.js course"
                 {...register("description")} 
-                defaultValue={course.description}
                 className="bg-transparent dark:border-zinc-800 border-zinc-200"
             />
         </div>
@@ -77,7 +82,6 @@ export default function EditCourse({course}: {course: any}) {
             <Input id="category"
                 placeholder="Web Development"
                 {...register("category")} 
-                defaultValue={course.category}
                 className="bg-transparent h-9 dark:border-zinc-800 border-zinc-200"
             />
         </div>
