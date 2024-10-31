@@ -1,6 +1,6 @@
 import React from 'react'
 import { BreadCrumbAdminCreateNewCourse } from '@/components/BreadCrumb'
-import { ButtonCourses } from '@/features/adminManager/adminStats/components/ButtonCourses'
+import FormCourse from '@/features/adminManager/adminCreateCourse/components/formCourse'
 
 const CreateNewCoursePage = () => {
   return (
@@ -8,9 +8,9 @@ const CreateNewCoursePage = () => {
       <BreadCrumbAdminCreateNewCourse />
 
       <section className="max-w-3xl mx-auto">
-      <h2 className="text-3xl font-semibold tracking-tight mb-4 mt-5 border-b dark:border-zinc-800 border-zinc-200 w-fit pb-2">Create Course</h2>
+        <h2 className="text-3xl font-semibold tracking-tight mb-4 mt-5 border-b dark:border-zinc-800 border-zinc-200 w-fit pb-2">Create Course</h2>
 
-        
+        <FormCourse />
       </section>
     </div>
   )
