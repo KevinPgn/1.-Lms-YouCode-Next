@@ -3,6 +3,7 @@ import { getCourseId } from '@/features/adminManager/adminCourseId/server/getCou
 import { BreadCrumbAdminCourseId } from '@/components/BreadCrumb'
 import { CourseInfo } from '@/features/adminManager/adminCourseId/components/CourseInfo'
 import { EnrolledUser } from '@/features/adminManager/adminCourseId/components/EnrolledUser'
+import { notFound } from 'next/navigation'
 
 interface CourseIdPageProps {
     params: Promise<{
@@ -13,6 +14,9 @@ interface CourseIdPageProps {
 const CourseIdPage = async ({params}: CourseIdPageProps) => {
   const {courseId} = await params
   const course = await getCourseId({courseId})
+  if(!course) {
+    notFound()    
+  }
 
   const enrolledUsers = course?.data?.enrolledUsers
 
@@ -25,7 +29,7 @@ const CourseIdPage = async ({params}: CourseIdPageProps) => {
 
         <div className='flex items-start gap-3'>
             <EnrolledUser enrolledUsers={enrolledUsers} />
-            <CourseInfo />
+            <CourseInfo course={course?.data} />
         </div>
       </section>
     </div>
