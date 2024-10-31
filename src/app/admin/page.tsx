@@ -1,4 +1,4 @@
-import BreadCrumbAdminStats from "@/components/BreadCrumb"
+import { BreadCrumbAdminStats } from "@/components/BreadCrumb"
 import { ButtonCourses } from "@/features/adminManager/adminStats/components/ButtonCourses"
 import { StatsTotalCourses } from "@/features/adminManager/adminStats/components/StatsTotalCourses"
 import { getSession } from "@/utils/CacheSession"
