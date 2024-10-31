@@ -14,6 +14,8 @@ const CourseIdPage = async ({params}: CourseIdPageProps) => {
   const {courseId} = await params
   const course = await getCourseId({courseId})
 
+  const enrolledUsers = course?.data?.enrolledUsers
+
   return (
    <div className="w-full min-h-[calc(100vh-250px)]">
       <BreadCrumbAdminCourseId courseId={courseId} />
@@ -22,7 +24,7 @@ const CourseIdPage = async ({params}: CourseIdPageProps) => {
         <h2 className="text-3xl font-semibold tracking-tight mb-4 mt-5 border-b dark:border-zinc-800 border-zinc-200 w-fit pb-2">Courses</h2>
 
         <div className='flex items-start gap-3'>
-            <EnrolledUser />
+            <EnrolledUser enrolledUsers={enrolledUsers} />
             <CourseInfo />
         </div>
       </section>
