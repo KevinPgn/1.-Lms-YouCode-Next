@@ -13,7 +13,8 @@ export const getUserCourses = cache(authenticatedAction
                 title: true,
                 image: true,
                 slug: true,
-            }
+            },
+            take: 10
         })
 
         return courses
