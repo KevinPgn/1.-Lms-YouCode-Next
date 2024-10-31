@@ -10,6 +10,7 @@ export const getUserCourses = cache(authenticatedAction
         const courses = await prisma.course.findMany({
             where: {authorId: userId},
             select: {
+                id: true,
                 title: true,
                 image: true,
                 slug: true,
