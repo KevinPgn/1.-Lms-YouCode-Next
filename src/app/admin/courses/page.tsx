@@ -1,6 +1,6 @@
 import React from 'react'
 import { Suspense } from 'react'
-import { BreadCrumbAdminStats } from '@/components/BreadCrumb'
+import { BreadCrumbAdminCourses } from '@/components/BreadCrumb'
 import { ButtonCreateNewCourse } from '@/features/adminManager/adminCourse/components/ButtonCreateNewCourse'
 import { getUserCourses } from '@/features/adminManager/adminCourse/server/getUserCourse'
 import { CourseList } from '@/features/adminManager/adminCourse/components/CourseList'
@@ -9,7 +9,7 @@ import { CourseList } from '@/features/adminManager/adminCourse/components/Cours
 const AdminCoursesPage = () => {
   return (
     <div className="w-full min-h-[calc(100vh-250px)]">
-      <BreadCrumbAdminStats />
+      <BreadCrumbAdminCourses />
 
       <section className="max-w-3xl mx-auto">
         <div className="flex items-center justify-between">
@@ -33,7 +33,9 @@ async function CoursesContent(){
   if (!result?.data) {
     throw new Error("Failed to fetch courses")
   }
-  if(result.data.length === 0) return <div>No courses found</div>
+  if(result.data.length === 0) return <div className='w-full max-md:w-full mx-auto rounded-2xl border dark:border-zinc-800 dark:bg-[#1D1916] bg-gray-50 shadow-lg mt-5 p-6'>
+    <h2 className='text-xl font-semibold text-center'>No courses found try to create one</h2>
+  </div>
 
   return <CourseList courses={result.data} />
 }
