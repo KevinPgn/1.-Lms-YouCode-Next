@@ -11,9 +11,21 @@ export const updateChaptersOrder = authenticatedAction
       order: z.number()
     }))
   }))
-  .action(async ({ parsedInput: { chapters } }) => {
+  .action(async ({ ctx: { userId }, parsedInput: { chapters } }) => {
     try {
-      // Utiliser une transaction pour s'assurer que toutes les mises à jour sont effectuées
+      // First verify that user owns the course
+      const firstChapter = await prisma.chapter.findFirst({
+        where: { id: chapters[0].id },
+        include: {
+          course: true
+        }
+      });
+
+      if (!firstChapter || firstChapter.course.authorId !== userId) {
+        throw new Error("Unauthorized: Only course creator can update chapter order");
+      }
+
+      // Use transaction to ensure all updates are performed
       await prisma.$transaction(
         chapters.map(({ id, order }: { id: string, order: number }) =>
           prisma.chapter.update({
@@ -23,11 +35,11 @@ export const updateChaptersOrder = authenticatedAction
         )
       );
 
-      // Vérifier que les mises à jour ont bien été effectuées
+      // Verify updates were successful
       const updatedChapters = await prisma.chapter.findMany({
         where: {
           id: {
-            in: chapters.map((c: any) => c.id)
+            in: chapters.map((c: { id: string }) => c.id)
           }
         },
         orderBy: {
