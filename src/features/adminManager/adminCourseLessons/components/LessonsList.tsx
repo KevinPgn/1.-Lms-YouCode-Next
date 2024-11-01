@@ -1,6 +1,5 @@
 "use client"
 import { ButtonCreateChapter } from "./ButtonCreateChapter"
-import { Menu } from "lucide-react"
 import {
   DndContext,
   closestCenter,
