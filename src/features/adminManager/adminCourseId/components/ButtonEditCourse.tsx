@@ -5,6 +5,6 @@ import { useRouter } from "next/navigation"
 export const ButtonEditCourse = ({courseId}: {courseId: string}) => {
   const router = useRouter()
   return <>
-    <Button variant="outline" className="className='text-sm text-black hover:bg-gray-100 bg-transparent dark:hover:bg-zinc-800 dark:text-white border dark:border-zinc-800'" onClick={() => router.push(`/admin/courses/${courseId}/edit`)}>Edit</Button>
+    <Button variant="outline" className="text-sm border dark:border-zinc-800 text-black hover:bg-gray-100 bg-transparent dark:hover:bg-zinc-800 dark:text-white" onClick={() => router.push(`/admin/courses/${courseId}/edit`)}>Edit</Button>
   </>
 }
