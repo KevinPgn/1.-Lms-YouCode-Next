@@ -24,10 +24,9 @@ export const createLesson = authenticatedAction
                 content: "Default content",
                 slug,
                 courseId,
-                published: false,
                 order: newOrder,
             }
         });
 
-        return chapter;
+        redirect(`/admin/courses/${courseId}/lessons/${chapter.id}`)
     })

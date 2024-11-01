@@ -26,7 +26,7 @@ interface Chapter {
   order: number;
 }
 
-export const LessonsList = ({ chapters: initialChapters }: { chapters: Chapter[] }) => {
+export const LessonsList = ({ chapters: initialChapters, courseId }: { chapters: Chapter[], courseId: string }) => {
   const [chapters, setChapters] = useState(
     [...initialChapters].sort((a, b) => a.order - b.order)
   );
@@ -96,7 +96,7 @@ export const LessonsList = ({ chapters: initialChapters }: { chapters: Chapter[]
           <span className="text-sm text-gray-500 text-center">No lessons found</span>
         )}
       </div>
-      <ButtonCreateChapter />
+      <ButtonCreateChapter courseId={courseId} />
     </div>
   )
 }

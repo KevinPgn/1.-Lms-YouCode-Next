@@ -33,7 +33,7 @@ const CourseLessonsPage = async ({params}: CourseLessonsPageProps) => {
       <section className="max-w-3xl mx-auto">
         <h2 className="text-3xl font-semibold tracking-tight mb-4 mt-5 border-b dark:border-zinc-800 border-zinc-200 w-fit pb-2">Lessons . {course.title}</h2>
 
-        <LessonsList chapters={course.chapters} />
+        <LessonsList courseId={courseId} chapters={course.chapters} />
       </section>
     </div>
   )
