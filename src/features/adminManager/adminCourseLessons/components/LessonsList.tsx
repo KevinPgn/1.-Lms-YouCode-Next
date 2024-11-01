@@ -15,7 +15,7 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { SortableLesson } from './SortableLesson';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { updateChaptersOrder } from '../server/updateChaptersOrder';
 import { toast } from 'react-toastify';
 
@@ -27,10 +27,14 @@ interface Chapter {
 }
 
 export const LessonsList = ({ chapters: initialChapters, courseId }: { chapters: Chapter[], courseId: string }) => {
-  const [chapters, setChapters] = useState(
-    [...initialChapters].sort((a, b) => a.order - b.order)
-  );
+  const [chapters, setChapters] = useState<Chapter[]>([]);
+  const [isClient, setIsClient] = useState(false);
   
+  useEffect(() => {
+    setChapters([...initialChapters].sort((a, b) => a.order - b.order));
+    setIsClient(true);
+  }, [initialChapters]);
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -88,7 +92,7 @@ export const LessonsList = ({ chapters: initialChapters, courseId }: { chapters:
               strategy={verticalListSortingStrategy}
             >
               {chapters.map((chapter) => (
-                <SortableLesson key={chapter.id} chapter={chapter} />
+                <SortableLesson key={chapter.id} chapter={chapter} courseId={courseId} />
               ))}
             </SortableContext>
           </DndContext>
