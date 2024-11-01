@@ -16,8 +16,12 @@ export const updateChaptersOrder = authenticatedAction
       // First verify that user owns the course
       const firstChapter = await prisma.chapter.findFirst({
         where: { id: chapters[0].id },
-        include: {
-          course: true
+        select: {
+          course: {
+            select: {
+              authorId: true
+            }
+          }
         }
       });
 
