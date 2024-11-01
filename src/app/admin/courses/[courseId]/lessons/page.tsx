@@ -17,7 +17,7 @@ const CourseLessonsPage = async ({params}: CourseLessonsPageProps) => {
     where: { id: courseId },
     select: {
         title: true,
-        chapters: { select: { id: true, title: true, published: true } }
+        chapters: { select: { id: true, title: true, published: true, order: true } }
     }
   })
 
