@@ -3,6 +3,7 @@ import { ButtonBack } from '@/features/adminManager/adminLesson/components/Butto
 import { LessonInfoLeft } from '@/features/adminManager/adminLesson/components/LessonInfoLeft'
 import { LessonInfoRight } from '@/features/adminManager/adminLesson/components/LessonInfoRight'
 import { notFound } from 'next/navigation'
+import { getLessonInformation } from '@/features/adminManager/adminLesson/server/getLessonInformation'
 
 interface LessonIdPageProps {
   params: Promise<{
@@ -18,6 +19,9 @@ const LessonIdPage = async ({params}: LessonIdPageProps) => {
     notFound()
   }
 
+  const chapterLessons = await getLessonInformation({ lessonId })
+  const result = chapterLessons?.data
+
   return (
     <div className="w-full min-h-[calc(100vh-250px)]">
       <BreadCrumbAdminCourseLessonsLessonId courseId={courseId} lessonId={lessonId} />
@@ -29,8 +33,8 @@ const LessonIdPage = async ({params}: LessonIdPageProps) => {
         </div>
 
         <div className='flex items-start gap-3'>
-            <LessonInfoLeft />
-            <LessonInfoRight />
+            <LessonInfoLeft chapterTitle={result?.title || ""} chapterPublished={result?.published || false} />
+            <LessonInfoRight chapterContent={result?.content || ""} />
         </div>
       </section>
     </div>
