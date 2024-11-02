@@ -26,7 +26,7 @@ export const LessonInfoLeft = ({ lessonId, chapterTitle, chapterPublished }: { l
     })
   }
 
-  return <div className="rounded-2xl border dark:border-zinc-800 dark:bg-[#1D1916] bg-gray-50 shadow-lg p-6 flex-1">
+  return <div className="rounded-2xl border max-lg:w-full dark:border-zinc-800 dark:bg-[#1D1916] bg-gray-50 shadow-lg p-6 flex-1">
     <h4 className="text-md font-semibold mb-5">Details</h4>
     
     <form onSubmit={handleSubmit(onSubmit)}>

@@ -33,7 +33,7 @@ const LessonIdPage = async ({params}: LessonIdPageProps) => {
           <ButtonBack />
         </div>
 
-        <div className='flex items-start gap-3'>
+        <div className='flex items-start gap-3 max-lg:flex-col'>
             <LessonInfoLeft lessonId={lessonId} chapterTitle={result?.title || ""} chapterPublished={result?.published || false} />
             <TooltipProvider>
               <LessonInfoRight chapterContent={result?.content || ""}  />
