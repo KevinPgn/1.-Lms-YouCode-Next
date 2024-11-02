@@ -34,9 +34,9 @@ const LessonIdPage = async ({params}: LessonIdPageProps) => {
         </div>
 
         <div className='flex items-start gap-3'>
-            <LessonInfoLeft chapterTitle={result?.title || ""} chapterPublished={result?.published || false} />
+            <LessonInfoLeft lessonId={lessonId} chapterTitle={result?.title || ""} chapterPublished={result?.published || false} />
             <TooltipProvider>
-              <LessonInfoRight chapterContent={result?.content || ""} />
+              <LessonInfoRight chapterContent={result?.content || ""}  />
             </TooltipProvider>
         </div>
       </section>
