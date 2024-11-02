@@ -4,6 +4,7 @@ import { LessonInfoLeft } from '@/features/adminManager/adminLesson/components/L
 import { LessonInfoRight } from '@/features/adminManager/adminLesson/components/LessonInfoRight'
 import { notFound } from 'next/navigation'
 import { getLessonInformation } from '@/features/adminManager/adminLesson/server/getLessonInformation'
+import { TooltipProvider } from '@/components/ui/tooltip'
 
 interface LessonIdPageProps {
   params: Promise<{
@@ -34,7 +35,9 @@ const LessonIdPage = async ({params}: LessonIdPageProps) => {
 
         <div className='flex items-start gap-3'>
             <LessonInfoLeft chapterTitle={result?.title || ""} chapterPublished={result?.published || false} />
-            <LessonInfoRight chapterContent={result?.content || ""} />
+            <TooltipProvider>
+              <LessonInfoRight chapterContent={result?.content || ""} />
+            </TooltipProvider>
         </div>
       </section>
     </div>
