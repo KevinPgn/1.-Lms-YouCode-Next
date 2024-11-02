@@ -12,9 +12,10 @@ export const editCourse = authenticatedAction
     image: z.string().url("Must be a valid URL").optional(),
     level: z.enum(["beginner", "intermediate", "advanced"]),
     description: z.string().min(1, "Description is required"),
-    category: z.string().min(1, "Category is required")
+    category: z.string().min(1, "Category is required"),
+    published: z.boolean().optional()
   }))
-  .action(async ({parsedInput: {courseId, title, image, level, description, category}, ctx: {userId}}) => {
+  .action(async ({parsedInput: {courseId, title, image, level, description, category, published}, ctx: {userId}}) => {
     const course = await prisma.course.findUnique({
       where: {
         id: courseId,
@@ -37,6 +38,7 @@ export const editCourse = authenticatedAction
         level,
         description,
         category,
+        published,
         updatedAt: new Date()
       }
     })

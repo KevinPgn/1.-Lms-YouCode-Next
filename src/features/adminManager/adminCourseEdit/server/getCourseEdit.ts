@@ -21,6 +21,7 @@ export const getCourseEdit = cache(authenticatedAction
                 image: true,
                 level: true,
                 category: true,
+                published: true
             }
         })
 

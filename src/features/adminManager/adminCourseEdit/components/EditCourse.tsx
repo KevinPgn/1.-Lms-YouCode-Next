@@ -15,15 +15,18 @@ export default function EditCourse({course}: {course: any}) {
             description: course.description,
             image: course.image,
             level: course.level,
-            category: course.category
+            category: course.category,
+            published: course.published
         }
     })
     const [level, setLevel] = useState("beginner")
+    const [published, setPublished] = useState(course.published)
+    console.log(published)
     const {toast} = useToast()
     
     const handleSubmitForm = async (data: any) => {
         try{
-            await editCourse({...data, level, courseId: course.id})
+            await editCourse({...data, level, courseId: course.id, published})
             toast({
                 title: "Course updated",
                 description: "Course has been updated successfully",
@@ -84,6 +87,21 @@ export default function EditCourse({course}: {course: any}) {
                 {...register("category")} 
                 className="bg-transparent h-9 dark:border-zinc-800 border-zinc-200"
             />
+        </div>
+        <div className="flex flex-col gap-2">
+            <label htmlFor="published" className="text-sm font-medium">Published</label>
+            <Select
+                value={published ? "published" : "draft"}
+                onValueChange={(value) => setPublished(value === "published")}
+            >
+                <SelectTrigger className="bg-transparent h-9 dark:border-zinc-800 border-zinc-200">
+                    <SelectValue placeholder="Select a status" />
+                </SelectTrigger>
+                <SelectContent className="dark:bg-[#1D1916]">
+                    <SelectItem value="published">Published</SelectItem>
+                    <SelectItem value="draft">Draft</SelectItem>
+                </SelectContent>
+            </Select>
         </div>
         <Button type="submit" className="w-full bg-[#E01C48] text-white hover:bg-[#E01C48]/80 h-9">Submit</Button>
     </form>
