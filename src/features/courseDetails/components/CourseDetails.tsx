@@ -39,7 +39,7 @@ export const CourseDetails = async ({course}: {course: any}) => {
         <Badge variant="outline">{courseData.category}</Badge>
       </div>
       
-      {!enrolled ? <JoinCourseBtn courseId={courseData.id} />: null}
+      {!enrolled && session ? <JoinCourseBtn courseId={courseData.id} /> : null}
     </div>
     <div className="flex-1 h-fit shadow-md dark:bg-[#1C1816] border dark:border-zinc-800 p-7 px-8 rounded-xl">
       <h3 className="text-sm font-semibold tracking-tight mb-2">Lessons</h3>
