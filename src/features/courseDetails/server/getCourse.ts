@@ -28,7 +28,18 @@ export const getCourse = cache(async (courseId: string) => {
                     title: true
                 }
             },
+            ...(userId ? {
+                enrolledUsers: {
+                    where: {
+                        userId
+                    },
+                    select: { id: true }
+                }
+            } : {})
         }
     })
-    return course
+    return {
+        course,
+        isEnrolled: userId ? (course?.enrolledUsers ?? []).length > 0 : false
+    }
 })
