@@ -18,3 +18,12 @@ export const getCourseChapter = async ({courseId}: {courseId: string}) => {
 
     return course
 }
+
+export const getChapter = async ({chapterId}: {chapterId: string}) => {
+    const chapter = await prisma.chapter.findUnique({
+        where: { id: chapterId },
+        select:{content: true, videoUrl: true, title: true}
+    })
+
+    return chapter
+}
