@@ -1,6 +1,15 @@
 import React from 'react'
 
-const ChapterIdPage = () => {
+interface ChapterIdPageProps {
+    params: Promise<{
+        courseId: string
+        chapterId: string
+    }>
+}
+
+const ChapterIdPage = async ({params}: ChapterIdPageProps) => {
+  const {courseId, chapterId} = await params
+  
   return (
     <section className='px-5 mt-5 mb-5'>
 
