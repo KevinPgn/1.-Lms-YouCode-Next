@@ -1,5 +1,6 @@
 "use server"
 import prisma from "@/lib/prisma";
+import { getSession } from "@/utils/CacheSession";
 
 export const getCourseChapter = async ({courseId}: {courseId: string}) => {
     const course = await prisma.course.findUnique({
@@ -12,18 +13,38 @@ export const getCourseChapter = async ({courseId}: {courseId: string}) => {
                     id: true,
                     title: true
                 }
-            }
+            },
         }
     })
 
     return course
 }
 
-export const getChapter = async ({chapterId}: {chapterId: string}) => {
-    const chapter = await prisma.chapter.findUnique({
-        where: { id: chapterId },
-        select:{content: true, videoUrl: true, title: true}
+export const getChapter = async ({chapterId, courseId}: {chapterId: string, courseId: string}) => {    
+    const session = await getSession()
+    
+    const course = await prisma.course.findUnique({
+        where: {id: courseId},
+        select: {
+            chapters: {
+                where: {id: chapterId},
+                select: {
+                    id: true,
+                    title: true,
+                    content: true,
+                    videoUrl: true
+                }
+            },
+            enrolledUsers: {
+                select: {
+                    userId: true
+                }
+            }
+        },
     })
 
-    return chapter
+    return {
+        course,
+        isEnrolled: course?.enrolledUsers.some(user => user.userId === session?.user?.id)
+    }
 }
