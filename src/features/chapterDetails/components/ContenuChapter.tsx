@@ -11,7 +11,7 @@ export const ContenuChapter = ({chapterContent, chapterVideoUrl, chapterTitle, i
         /> : <div className="prose prose-invert max-w-none [&_h1]:text-3xl dark:text-white">
           <p>Vous devez être inscrit à ce cours pour accéder à ce contenu</p>
         </div>}
-        <ButtonCompletedChapter chapterId={chapterId} />
+        {isEnrolled && <ButtonCompletedChapter chapterId={chapterId} />}
     </div>
   </>
 }

@@ -12,11 +12,11 @@ export default async function ChapterLayout({
     }>
 }) {
     const {courseId} = await params
-    const chapter = await getCourseChapter({courseId})
-    
+    const course = await getCourseChapter({courseId})
+    console.log(course)
 
     return <div className="flex gap-5 px-10 my-5">
-        <SidebarChapter courseTitle={chapter?.title ?? ""} courseChapters={chapter?.chapters ?? []} courseId={courseId} />
+        <SidebarChapter course={course}/>
         {children}
     </div>
 }

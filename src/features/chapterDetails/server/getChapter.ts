@@ -3,6 +3,9 @@ import prisma from "@/lib/prisma";
 import { getSession } from "@/utils/CacheSession";
 
 export const getCourseChapter = async ({courseId}: {courseId: string}) => {
+    const session = await getSession()
+    const userId = session?.user?.id
+
     const course = await prisma.course.findUnique({
         where: { id: courseId },
         select: { 
@@ -11,13 +14,21 @@ export const getCourseChapter = async ({courseId}: {courseId: string}) => {
             chapters: {
                 select: {
                     id: true,
-                    title: true
-                }
-            },
+                    title: true,
+                    userProgress: {
+                        where: {
+                            userId: userId ?? ''
+                        },
+                        select: {
+                            isCompleted: true,
+                        }
+                    }
+                },
+            }
         }
     })
 
-    return course
+    return course 
 }
 
 export const getChapter = async ({chapterId, courseId}: {chapterId: string, courseId: string}) => {    
