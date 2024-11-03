@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma"
 import { authenticatedAction } from "@/lib/safe-actions"
 import { z } from "zod"
 
-export const toggleChapterComplete = authenticatedAction
+export const toggleChapterCompleted = authenticatedAction
     .schema(z.object({
         chapterId: z.string()
     }))
