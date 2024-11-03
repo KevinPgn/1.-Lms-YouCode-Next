@@ -44,7 +44,7 @@ export const CourseDetails = async ({course}: {course: any}) => {
     <div className="flex-1 h-fit shadow-md dark:bg-[#1C1816] border dark:border-zinc-800 p-7 px-8 rounded-xl">
       <h3 className="text-sm font-semibold tracking-tight mb-2">Lessons</h3>
       <Suspense fallback={<div>Loading...</div>}>
-        <ListLessons lessons={courseData.chapters} isEnrolled={enrolled} />
+        <ListLessons lessons={courseData.chapters} isEnrolled={enrolled} courseId={courseData.id} />
       </Suspense>
       {!enrolled ? <span className="text-sm text-red-500 dark:text-red-400 mt-4 text-center">You need to be enrolled in the course to access the lessons</span> : null}
     </div>
