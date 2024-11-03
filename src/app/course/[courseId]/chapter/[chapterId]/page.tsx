@@ -15,7 +15,13 @@ const ChapterIdPage = async ({params}: ChapterIdPageProps) => {
   
   return (
     <section className='flex-1 dark:bg-[#1C1816] border dark:border-zinc-800 rounded-xl p-5'>
-      <ContenuChapter isEnrolled={isEnrolled} chapterContent={course?.chapters[0].content ?? ""} chapterVideoUrl={course?.chapters[0].videoUrl ?? ""} chapterTitle={course?.chapters[0].title ?? ""} />
+      <ContenuChapter 
+        isEnrolled={isEnrolled ?? false} 
+        chapterContent={course?.chapters[0].content ?? ""} 
+        chapterVideoUrl={course?.chapters[0].videoUrl ?? ""} 
+        chapterTitle={course?.chapters[0].title ?? ""} 
+        chapterId={course?.chapters[0].id ?? ""}
+      />
     </section>
   )
 }
